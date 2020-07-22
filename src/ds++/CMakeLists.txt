@@ -120,6 +120,13 @@ endif()
 # Build package library
 # ---------------------------------------------------------------------------- #
 
+add_library(dsxx_obj OBJECT ${sources} )
+target_include_directories( dsxx_obj
+   PUBLIC
+   $<BUILD_INTERFACE:${Draco_SOURCE_DIR}/src>
+   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>
+   $<INSTALL_INTERFACE:${DBSCFG_IMPORT_PREFIX}> )
+
 add_component_library(
    TARGET       Lib_dsxx
    LIBRARY_NAME ds++

@@ -23,6 +23,13 @@ list( REMOVE_ITEM headers ${template_implementations} )
 # Build package library
 # ---------------------------------------------------------------------------- #
 
+add_library(special_functions_obj OBJECT "${sources}")
+
+target_include_directories(special_functions_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( special_functions_obj units_obj roots_obj GSL::gsl )
+
 add_component_library(
    TARGET       Lib_special_functions
    TARGET_DEPS  "Lib_units;Lib_roots;GSL::gsl"

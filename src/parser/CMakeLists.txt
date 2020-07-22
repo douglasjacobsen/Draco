@@ -20,6 +20,14 @@ file( GLOB headers *.hh )
 # Build package library
 # ---------------------------------------------------------------------------- #
 
+add_library(parser_obj OBJECT "${sources}")
+
+target_include_directories(parser_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( parser_obj c4_obj units_obj )
+
+
 add_component_library(
    TARGET       Lib_parser
    TARGET_DEPS  "Lib_c4;Lib_units"

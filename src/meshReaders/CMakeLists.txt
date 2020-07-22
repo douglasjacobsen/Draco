@@ -21,6 +21,13 @@ file( GLOB headers *.hh )
 # Build package library
 # ---------------------------------------------------------------------------- #
 
+add_library(meshReaders_obj OBJECT "${sources}")
+
+target_include_directories(meshReaders_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( meshReaders_obj mesh_element_obj )
+
 add_component_library(
    TARGET       Lib_meshReaders
    TARGET_DEPS  Lib_mesh_element

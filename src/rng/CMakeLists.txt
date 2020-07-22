@@ -43,6 +43,20 @@ if( HAVE_CUDA AND USE_CUDA )
 else()
   set(deps Lib_dsxx GSL::gsl )
 endif()
+
+add_library(rng_obj OBJECT "${sources}")
+
+target_include_directories(rng_obj PUBLIC
+  $<BUILD_INTERFACE:${draco_src_dir_BINARY_DIR}/device> # remove this when 'device/cmakefiles.txt' is updated?
+  $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>
+  ${RANDOM123_INCLUDE_DIR} )
+
+if ( HAVE_CUDA AND USE_CUDE )
+  target_link_libraries( rng_obj device_obj GSL::gsl dsxx_obj )
+else()
+  target_link_libraries( rng_obj GSL::gsl dsxx_obj )
+endif()
+
 add_component_library(
   TARGET       Lib_rng
   TARGET_DEPS  "${deps}"
@@ -61,7 +75,6 @@ target_include_directories( Lib_rng PUBLIC
 # ---------------------------------------------------------------------------- #
 # Installation instructions
 # ---------------------------------------------------------------------------- #
-
 install( TARGETS Lib_rng EXPORT draco-targets
   LIBRARY DESTINATION "${DBSCFGDIR_LIBRARY}"
   ARCHIVE DESTINATION "${DBSCFGDIR}lib"

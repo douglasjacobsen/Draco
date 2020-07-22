@@ -26,6 +26,17 @@ if( HAVE_CUDA AND USE_CUDA )
   list( APPEND headers
     GPU_Device.hh
     device_cuda.h )
+
+  add_library(device_obj OBJECT "${sources}")
+
+  target_include_directories(device_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>
+    PUBLIC $<BUILD_INTERFACE:${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES} )
+
+  target_link_libraries( device_obj dsxx_obj )
+
+
+
   add_component_library(
     TARGET       Lib_device
     TARGET_DEPS  Lib_dsxx

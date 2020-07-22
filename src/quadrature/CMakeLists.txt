@@ -26,6 +26,14 @@ endforeach()
 # ---------------------------------------------------------------------------- #
 # Build package library
 # ---------------------------------------------------------------------------- #
+
+add_library(quadrature_obj OBJECT "${sources}")
+
+target_include_directories(quadrature_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( quadrature_obj special_functions_obj parser_obj mesh_element_obj )
+
 add_component_library(
    TARGET       Lib_quadrature
    TARGET_DEPS  "Lib_special_functions;Lib_parser;Lib_mesh_element"

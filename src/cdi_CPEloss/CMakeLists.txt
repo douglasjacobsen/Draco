@@ -20,6 +20,13 @@ file( GLOB headers *.hh )
 # Build package library
 # ---------------------------------------------------------------------------- #
 
+add_library(cdi_CPEloss_obj OBJECT "${sources}")
+
+target_include_directories(cdi_CPEloss_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( cdi_CPEloss_obj dsxx_obj )
+
 add_component_library(
    TARGET       Lib_cdi_CPEloss
    TARGET_DEPS  "Lib_cdi;Lib_units"

@@ -21,6 +21,12 @@ list( REMOVE_ITEM sources ${PROJECT_SOURCE_DIR}/QueryEospac.cc )
 # Build package library
 # ---------------------------------------------------------------------------- #
 
+add_library(cdi_eospac_obj OBJECT "${sources}")
+
+target_include_directories(cdi_eospac_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> ${EOSPAC_INCLUDE_DIR} )
+target_link_libraries(cdi_eospac_obj cdi_obj EOSPAC::eospac)
+
 add_component_library(
    TARGET       Lib_cdi_eospac
    TARGET_DEPS  "Lib_cdi;EOSPAC::eospac"

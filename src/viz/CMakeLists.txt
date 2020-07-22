@@ -22,6 +22,13 @@ list( REMOVE_ITEM headers ${template_implementations} )
 # Build package library
 # ---------------------------------------------------------------------------- #
 
+add_library(viz_obj OBJECT "${sources}")
+
+target_include_directories(viz_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( viz_obj c4_obj )
+
 add_component_library(
    TARGET       Lib_viz
    TARGET_DEPS  Lib_c4

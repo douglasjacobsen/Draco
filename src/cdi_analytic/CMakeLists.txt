@@ -20,6 +20,10 @@ file( GLOB headers *.hh )
 # Build package library
 # ---------------------------------------------------------------------------- #
 
+add_library(cdi_analytic_obj OBJECT "${sources}")
+
+target_link_libraries(cdi_analytic_obj parser_obj roots_obj cdi_obj)
+
 add_component_library(
    TARGET       Lib_cdi_analytic
    TARGET_DEPS  "Lib_parser;Lib_roots;Lib_cdi"

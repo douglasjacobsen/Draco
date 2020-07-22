@@ -37,12 +37,20 @@ if( PAPI_LIBRARY )
 endif()
 
 set( target_deps Lib_dsxx )
+set( target_deps_obj dsxx_obj LIBQUO::libquo MPI::MPI_CXX MPI::MPI_C)
 if ( "${DRACO_C4}" STREQUAL "MPI")
   if( HAVE_LIBQUO )
     list(APPEND target_deps LIBQUO::libquo)
   endif()
   list(APPEND target_deps MPI::MPI_CXX MPI::MPI_C )
 endif()
+
+add_library(c4_obj OBJECT "${sources}")
+
+target_include_directories(c4_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( c4_obj ${target_deps_obj} )
 
 add_component_library(
    TARGET       Lib_c4
@@ -133,6 +141,7 @@ endif()
 # Autodoc
 # ---------------------------------------------------------------------------- #
 process_autodoc_pages()
+
 
 #------------------------------------------------------------------------------#
 # End c4/CMakeLists.txt

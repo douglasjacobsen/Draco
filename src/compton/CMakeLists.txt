@@ -30,6 +30,13 @@ if( TARGET COMPTON::compton )
   # Build package library
   # -------------------------------------------------------------------------- #
 
+  add_library(compton_obj OBJECT "${sources}")
+
+  target_include_directories(compton_obj
+      PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+  target_link_libraries(compton_obj c4_obj COMPTON::compton)
+
   add_component_library(
     TARGET       Lib_compton
     TARGET_DEPS  "Lib_c4;COMPTON::compton"

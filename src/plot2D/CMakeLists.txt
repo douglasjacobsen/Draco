@@ -27,6 +27,14 @@ list( APPEND headers ${PROJECT_BINARY_DIR}/plot2D/config.h )
 # ---------------------------------------------------------------------------- #
 # Build package library
 # ---------------------------------------------------------------------------- #
+
+add_library(plot2D_obj OBJECT "${sources}")
+
+target_include_directories(plot2D_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( plot2D_obj dsxx_obj )
+
 add_component_library(
    TARGET       Lib_plot2D
    TARGET_DEPS  Lib_dsxx

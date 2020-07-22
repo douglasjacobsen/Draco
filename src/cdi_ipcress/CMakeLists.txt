@@ -32,6 +32,14 @@ set( headers
 # Build package library
 # ---------------------------------------------------------------------------- #
 
+add_library(cdi_ipcress_obj OBJECT "${sources}")
+
+target_include_directories(cdi_ipcress_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries(cdi_ipcress_obj
+    PUBLIC dsxx_obj)
+
 add_component_library(
   TARGET       Lib_cdi_ipcress
   TARGET_DEPS  "Lib_cdi"

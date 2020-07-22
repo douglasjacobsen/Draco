@@ -22,6 +22,13 @@ file( GLOB headers *.hh )
 # Build package library
 # ---------------------------------------------------------------------------- #
 
+add_library(memory_obj OBJECT "${sources}")
+
+target_include_directories(memory_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( memory_obj dsxx_obj )
+
 add_component_library(
    TARGET       Lib_memory
    TARGET_DEPS  Lib_dsxx

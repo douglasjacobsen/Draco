@@ -15,11 +15,13 @@ file( GLOB sources *.cc )
 file( GLOB headers *.hh )
 list( APPEND headers ${PROJECT_BINARY_DIR}/cdi_ndi/config.h )
 set(deps Lib_cdi Lib_rng Lib_units)
+set(deps_obj cdi_obj rng_obj units_obj)
 
 # If NDI is found, set the associated variables. Otherwise, the cdi_ndi lib will
 # be built with stubbed-out routines.
 if(TARGET NDI::ndi)
   list(APPEND deps NDI::ndi)
+  list(APPEND deps_obj NDI::ndi)
 
   if( NOT DEFINED NDI_ROOT_DIR AND DEFINED $ENV{NDI_ROOT_DIR})
     set(NDI_ROOT_DIR $ENV{NDI_ROOT_DIR})
@@ -56,6 +58,13 @@ configure_file( config.h.in ${PROJECT_BINARY_DIR}/cdi_ndi/config.h )
 # ---------------------------------------------------------------------------- #
 # Build package library
 # ---------------------------------------------------------------------------- #
+add_library(cdi_ndi_obj OBJECT "${sources}")
+
+target_include_directories(cdi_ndi_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries(cdi_ndi_obj ${deps_obj})
+
 add_component_library(
    TARGET       Lib_cdi_ndi
    TARGET_DEPS  "${deps}"
@@ -67,6 +76,8 @@ target_include_directories( Lib_cdi_ndi
    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
 
 if(TARGET NDI::ndi)
+  target_include_directories(cdi_ndi_obj
+      PUBLIC ${NDI_INCLUDE_DIR} )
   target_include_directories( Lib_cdi_ndi PUBLIC ${NDI_INCLUDE_DIR} )
 endif()
 

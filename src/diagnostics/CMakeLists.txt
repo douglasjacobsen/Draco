@@ -66,9 +66,23 @@ endif()
 # ---------------------------------------------------------------------------- #
 
 set(deps Lib_c4)
+set(deps_obj c4_obj)
 if(TARGET CALIPER::caliper)
   list(APPEND deps CALIPER::caliper)
+  list(APPEND deps_obj CALIPER::caliper)
 endif()
+
+set(sources_obj "Diagnostics.cc")
+list(APPEND sources_obj "Procmon.cc")
+list(APPEND sources_obj "runtime_check.cc")
+list(APPEND sources_obj "Timing.cc")
+
+add_library(diagnostics_obj OBJECT "${sources_obj}")
+
+target_include_directories(diagnostics_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( diagnostics_obj ${deps_obj} )
 
 add_component_library(
   TARGET       Lib_diagnostics

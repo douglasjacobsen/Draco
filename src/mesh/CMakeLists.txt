@@ -21,6 +21,13 @@ file( GLOB headers *.hh )
 # Build package library
 # ---------------------------------------------------------------------------- #
 
+add_library(mesh_obj OBJECT "${sources}")
+
+target_include_directories(mesh_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( mesh_obj RTT_Format_Reader_obj parser_obj )
+
 add_component_library(
    TARGET       Lib_mesh
    TARGET_DEPS  "Lib_RTT_Format_Reader;Lib_parser"

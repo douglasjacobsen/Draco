@@ -26,6 +26,13 @@ file( GLOB Csources *.cc )
 # ---------------------------------------------------------------------------- #
 # Build package libraries
 # ---------------------------------------------------------------------------- #
+add_library(FC_Derived_type_obj OBJECT "${Csources}")
+
+target_include_directories(FC_Derived_type_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( FC_Derived_type_obj dsxx_obj )
+
 add_component_library(
   TARGET       Lib_FC_Derived_Type
   TARGET_DEPS  "Lib_dsxx"

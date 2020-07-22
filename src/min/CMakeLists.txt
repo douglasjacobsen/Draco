@@ -22,6 +22,13 @@ list( REMOVE_ITEM headers ${template_implementations} )
 # Build package library
 # ---------------------------------------------------------------------------- #
 
+add_library(min_obj OBJECT "${sources}")
+
+target_include_directories(min_obj
+    PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}> )
+
+target_link_libraries( min_obj linear_obj )
+
 add_component_library(
    TARGET       Lib_min
    TARGET_DEPS  Lib_linear
