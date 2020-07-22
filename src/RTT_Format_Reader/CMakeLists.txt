@@ -39,6 +39,8 @@ add_component_library(
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 
+install( TARGETS RTT_Format_Reader_obj EXPORT draco-targets DESTINATION
+  ${DBSCFGDIR}lib )
 install( TARGETS Lib_RTT_Format_Reader EXPORT draco-targets DESTINATION
   ${DBSCFGDIR}lib )
 install( FILES ${headers} DESTINATION ${DBSCFGDIR}include/RTT_Format_Reader )

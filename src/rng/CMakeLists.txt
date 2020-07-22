@@ -75,6 +75,10 @@ target_include_directories( Lib_rng PUBLIC
 # ---------------------------------------------------------------------------- #
 # Installation instructions
 # ---------------------------------------------------------------------------- #
+install( TARGETS rng_obj EXPORT draco-targets
+  OBJECTS DESTINATION "${DBSCFGDIR}lib"
+  RUNTIME DESTINATION "${DBSCFGDIR}bin"
+  PUBLIC_HEADER DESTINATION "${DBSCFGDIR}include/rng" )
 install( TARGETS Lib_rng EXPORT draco-targets
   LIBRARY DESTINATION "${DBSCFGDIR_LIBRARY}"
   ARCHIVE DESTINATION "${DBSCFGDIR}lib"

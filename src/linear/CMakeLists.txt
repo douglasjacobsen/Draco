@@ -40,6 +40,7 @@ add_component_library(
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 
+install( TARGETS linear_obj EXPORT draco-targets DESTINATION ${DBSCFGDIR}lib )
 install( TARGETS Lib_linear EXPORT draco-targets DESTINATION ${DBSCFGDIR}lib )
 install( FILES ${headers} ${template_implementations} DESTINATION
   ${DBSCFGDIR}include/linear )

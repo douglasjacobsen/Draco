@@ -39,6 +39,9 @@ add_component_library(
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 
+install( TARGETS meshReaders_obj
+   EXPORT draco-targets
+   DESTINATION ${DBSCFGDIR}lib )
 install( TARGETS Lib_meshReaders
    EXPORT draco-targets
    DESTINATION ${DBSCFGDIR}lib )

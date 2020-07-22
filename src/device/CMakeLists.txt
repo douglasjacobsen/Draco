@@ -47,6 +47,7 @@ if( HAVE_CUDA AND USE_CUDA )
   target_include_directories( Lib_device
     PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES}> )
+  install( TARGETS device_obj EXPORT draco-targets DESTINATION ${DBSCFGDIR}lib )
   install( TARGETS Lib_device EXPORT draco-targets DESTINATION ${DBSCFGDIR}lib )
 
 endif()

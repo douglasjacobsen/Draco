@@ -147,6 +147,7 @@ target_include_directories( Lib_dsxx
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 
+install( TARGETS dsxx_obj EXPORT draco-targets DESTINATION ${DBSCFGDIR}lib )
 install( TARGETS Lib_dsxx EXPORT draco-targets DESTINATION ${DBSCFGDIR}lib )
 install( TARGETS coverage_config EXPORT draco-targets )
 install( FILES ${dsxx_headers} ${template_implementations} DESTINATION

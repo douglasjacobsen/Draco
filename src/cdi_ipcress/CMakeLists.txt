@@ -57,6 +57,8 @@ add_component_executable(
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 set( CMAKE_INSTALL_DO_STRIP NO )
+install( TARGETS cdi_ipcress_obj EXPORT draco-targets
+  DESTINATION ${DBSCFGDIR}lib )
 install( TARGETS Lib_cdi_ipcress EXPORT draco-targets
   DESTINATION ${DBSCFGDIR}lib )
 install( FILES ${headers} DESTINATION ${DBSCFGDIR}include/cdi_ipcress )

@@ -45,6 +45,10 @@ set_target_properties(Lib_quadrature PROPERTIES
 # ---------------------------------------------------------------------------- #
 # Installation instructions
 # ---------------------------------------------------------------------------- #
+install( TARGETS quadrature_obj EXPORT draco-targets
+  OBJECTS DESTINATION "${DBSCFGDIR}lib"
+  RUNTIME DESTINATION "${DBSCFGDIR}bin"
+  PUBLIC_HEADER DESTINATION "${DBSCFGDIR}include/quadrature" )
 install( TARGETS Lib_quadrature EXPORT draco-targets
   LIBRARY DESTINATION "${DBSCFGDIR_LIBRARY}"
   ARCHIVE DESTINATION "${DBSCFGDIR}lib"

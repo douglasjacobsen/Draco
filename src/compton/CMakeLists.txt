@@ -58,6 +58,8 @@ if( TARGET COMPTON::compton )
   # Installation instructions
   # -------------------------------------------------------------------------- #
 
+  install( TARGETS compton_obj EXPORT draco-targets DESTINATION
+    ${DBSCFGDIR}lib )
   install( TARGETS Lib_compton EXPORT draco-targets DESTINATION
     ${DBSCFGDIR}lib )
   install( FILES ${headers} DESTINATION ${DBSCFGDIR}include/compton )

@@ -38,6 +38,8 @@ add_component_library(
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 
+install( TARGETS cdi_CPEloss_obj  EXPORT draco-targets DESTINATION
+  ${DBSCFGDIR}lib )
 install( TARGETS Lib_cdi_CPEloss  EXPORT draco-targets DESTINATION
   ${DBSCFGDIR}lib )
 install( FILES ${headers} DESTINATION ${DBSCFGDIR}include/cdi_CPEloss )

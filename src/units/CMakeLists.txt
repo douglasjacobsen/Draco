@@ -39,6 +39,7 @@ add_component_library(
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 
+install( TARGETS units_obj EXPORT draco-targets DESTINATION ${DBSCFGDIR}lib )
 install( TARGETS Lib_units EXPORT draco-targets DESTINATION ${DBSCFGDIR}lib )
 install( FILES ${headers} DESTINATION ${DBSCFGDIR}include/units )
 if( "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")

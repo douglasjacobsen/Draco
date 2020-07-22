@@ -113,6 +113,8 @@ endif()
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 
+install( TARGETS diagnostics_obj EXPORT draco-targets DESTINATION
+  ${DBSCFGDIR}lib )
 install( TARGETS Lib_diagnostics EXPORT draco-targets DESTINATION
   ${DBSCFGDIR}lib )
 install( TARGETS Exe_draco_info  EXPORT draco-targets DESTINATION

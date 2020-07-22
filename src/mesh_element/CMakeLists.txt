@@ -40,6 +40,8 @@ add_component_library(
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 
+install( TARGETS mesh_element_obj EXPORT draco-targets DESTINATION
+  ${DBSCFGDIR}lib )
 install( TARGETS Lib_mesh_element EXPORT draco-targets DESTINATION
   ${DBSCFGDIR}lib )
 install( FILES ${headers} DESTINATION ${DBSCFGDIR}include/mesh_element )

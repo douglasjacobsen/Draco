@@ -85,6 +85,8 @@ endif()
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 
+install( TARGETS cdi_ndi_obj  EXPORT draco-targets DESTINATION
+  ${DBSCFGDIR}lib )
 install( TARGETS Lib_cdi_ndi  EXPORT draco-targets DESTINATION
   ${DBSCFGDIR}lib )
 install( FILES ${headers} DESTINATION ${DBSCFGDIR}include/cdi_ndi )

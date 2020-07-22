@@ -41,6 +41,8 @@ add_component_library(
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 
+install( TARGETS special_functions_obj EXPORT draco-targets DESTINATION
+  ${DBSCFGDIR}lib )
 install( TARGETS Lib_special_functions EXPORT draco-targets DESTINATION
   ${DBSCFGDIR}lib )
 install( FILES ${headers} ${template_implementations} DESTINATION

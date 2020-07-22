@@ -52,6 +52,8 @@ endif()
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 
+install( TARGETS cdi_eospac_obj  EXPORT draco-targets DESTINATION
+  ${DBSCFGDIR}lib )
 install( TARGETS Lib_cdi_eospac  EXPORT draco-targets DESTINATION
   ${DBSCFGDIR}lib )
 install( TARGETS Exe_QueryEospac EXPORT draco-targets DESTINATION

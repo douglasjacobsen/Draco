@@ -39,6 +39,7 @@ add_component_library(
 # Installation instructions
 # ---------------------------------------------------------------------------- #
 
+install( TARGETS cdi_obj EXPORT draco-targets DESTINATION ${DBSCFGDIR}lib )
 install( TARGETS Lib_cdi EXPORT draco-targets DESTINATION ${DBSCFGDIR}lib )
 install( FILES ${headers} DESTINATION ${DBSCFGDIR}include/cdi )
 if( "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
